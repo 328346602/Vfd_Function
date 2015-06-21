@@ -1,0 +1,13 @@
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\bin\Debug\MyFunction.pdb
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\obj\Debug\MyFunction.csprojResolveAssemblyReference.cache
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\obj\Debug\MyFunction.dll
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\obj\Debug\MyFunction.pdb
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\bin\Debug\VFDInterface.dll
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\bin\Debug\MyFunction.dll
+C:\Users\冬萌\documents\visual studio 2012\Projects\MyFunction\MyFunction\bin\Debug\WebUse.dll
+C:\Users\LDM\Documents\Visual Studio 2013\Projects\MyFunction\MyFunction\bin\Debug\MyFunction.dll
+C:\Users\LDM\Documents\Visual Studio 2013\Projects\MyFunction\MyFunction\bin\Debug\MyFunction.pdb
+C:\Users\LDM\Documents\Visual Studio 2013\Projects\MyFunction\MyFunction\bin\Debug\VFDInterface.dll
+C:\Users\LDM\Documents\Visual Studio 2013\Projects\MyFunction\MyFunction\obj\Debug\MyFunction.csprojResolveAssemblyReference.cache
+C:\Users\LDM\Documents\Visual Studio 2013\Projects\MyFunction\MyFunction\obj\Debug\MyFunction.dll
+C:\Users\LDM\Documents\Visual Studio 2013\Projects\MyFunction\MyFunction\obj\Debug\MyFunction.pdb
