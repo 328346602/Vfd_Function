@@ -407,7 +407,7 @@ namespace Function
                 else
                 {
                     Tool.WriteLog("开始发送消息");
-                    Tool.Alert(Tool.SendMessage(db,sUserList, sMsg, sUrl, sCaseNo, sMsgType, _Page), _Page);
+                    Tool.Alert(Tool.SendMessage(sUserList, sMsg,sUrl,sCaseNo ,sMsgType, _Page),_Page);
                 }
                 return true;
             }
@@ -735,7 +735,7 @@ namespace Function
             {
                 string sMsgInfo = "&nbsp;&nbsp;&nbsp;&nbsp;<a class=''grid-pager'' href=''#'' onclick=''top.redirectUrl(\"" + sUrl + "\"); return false;''>" + sMsg + "</a>";
                 //DatabaseORC db = new DatabaseORC();
-                string sSql = "insert into messagesys(RECEIVEID,MESSAGE,COMETIME,MSGTYPE,MESSAGEINFO,SHOWFLG) values('" + sUserID + "','" + sMsg + "',to_date('" + sDateTime + "','yyyy-mm-dd hh24:mi:ss'),'" + sMsgType + "','" + sMsgInfo + "','0')";
+                string sSql = "insert into messagesys(RECEIVEID,MESSAGE,COMETIME,MSGTYPE,MESSAGEINFO) values('" + sUserID + "','" + sMsg + "',to_date('" + sDateTime + "','yyyy-mm-dd hh24:mi:ss'),'" + sMsgType + "','" + sMsgInfo + "')";
                 //WriteLog(sSql);//检查sql语句是否拼写正确
                 db.ExecuteSql(sSql);
                 //ShowMessage.Alert("发送消息成功", "1", "提示", _Page);
@@ -935,11 +935,11 @@ namespace Function
                 string sSql = "insert into CM_LC_SIGN(RECEIVEID,COMETIME,GUID,SIGNTYPE) values('" + sUserID + "',to_date('" + sDateTime + "','yyyy-mm-dd hh24:mi:ss'),'" + sGuid + "','" + sSignType + "')";
                 db.ExecuteSql(sSql);
                 //WriteLog("SendMeetingNotice----" + sSql);
-                return "文件发送成功!";
+                return "发送通知成功!";
             }
             catch (Exception oExcept)
             {
-                return "文件发送失败:" + oExcept.Message;
+                return "发送通知失败:" + oExcept.Message;
             }
         }
 
@@ -999,7 +999,7 @@ namespace Function
                     for (int m = 0; m < ds.Tables[0].Rows.Count; m++)//循环向用户发送消息
                     {
                         sUser = ds.Tables[0].Rows[m][0].ToString();
-                        sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendFiles(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
+                        sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendInfo(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
                     }
                 }
                 #endregion
@@ -1025,7 +1025,7 @@ namespace Function
                                     arrSendedUsers.Add("@" + ds.Tables[0].Rows[j][0] + "@");
                                     //Tool.WriteLog("第"+(j+1)+"次发送"+sUser);
                                     //sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl, _Page);
-                                    sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendFiles(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
+                                    sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendInfo(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
                                     //sReturn = Tool.SendMessage(db, ds.Tables[0].Rows[j][0].ToString().Remove(0,2), sMsg, sDateTime, sMsgType, sUrl, _Page);
 
                                 }
@@ -1042,7 +1042,7 @@ namespace Function
                             {
                                 arrSendedUsers.Add("@" + sUser + "@");
                                 //sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl, _Page);
-                                sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendFiles(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
+                                sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendInfo(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
                                 //sReturn = Tool.SendMessage(db, strUserList[i], sMsg, sDateTime, sMsgType, sUrl, _Page);
                             }
                             else
@@ -1069,7 +1069,7 @@ namespace Function
                                 arrSendedUsers.Add("@" + ds.Tables[0].Rows[j][0] + "@");
                                 sUser = ds.Tables[0].Rows[j][0].ToString();
                                 //sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl, _Page);
-                                sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendFiles(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
+                                sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendInfo(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
                                 //sReturn = Tool.SendMessage(db, ds.Tables[0].Rows[j][0].ToString().Remove(0,2), sMsg, sDateTime, sMsgType, sUrl, _Page);
                             }
                             else
@@ -1083,19 +1083,16 @@ namespace Function
                         //arrSendedUsers.Add("@" + sUserList + "@");
                         sUser = sUserList.Remove(0, 2);
                         //sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl, _Page);
-                        sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendFiles(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
+                        sReturn = Tool.SendMessage(db, sUser, sMsg, sDateTime, sMsgType, sUrl + sGuid, _Page) + Tool.SendInfo(db, sUser, sDateTime, sGuid, sNoticeType, _Page);
                     }
                 }
                 #endregion
-
-                #region Debug
-                //string sSendedUsers = string.Empty;
-                //for (int n = 0; n < arrSendedUsers.Count; n++)
-                //{
-                //    sSendedUsers = sSendedUsers + arrSendedUsers[n];
-                //}
-                //Tool.WriteLog(sSendedUsers);
-                #endregion
+                string sSendedUsers = string.Empty;
+                for (int n = 0; n < arrSendedUsers.Count; n++)
+                {
+                    sSendedUsers = sSendedUsers + arrSendedUsers[n];
+                }
+                Tool.WriteLog(sSendedUsers);
                 if (sReturn == "")
                 {
                     return "会议通知发送完毕！";
