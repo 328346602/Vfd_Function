@@ -430,12 +430,20 @@ namespace Function
                 TextBox tbCaseNo = (TextBox)_Page.FindControl("txtCaseNo");
                 string sCaseNo = tbCaseNo.Text;
                 DatabaseORC db = new DatabaseORC();
+                //删除签收信息SQL
                 string deleteSignSQL = "Delete cm_lc_sign where GUID='" + sCaseNo + "'";
+                //删除发文信息SQL
                 string deleteFilesSQL="Delete cm_lc_sendfiles where GUID='" + sCaseNo + "'";
+                //删除系统消息SQL
+                string deleteMsgSQL = "Delete messagesys where MESSAGEINFO like '%"+sCaseNo+"%'";
                 try
                 {
+                    //删除签收信息
                     db.ExecuteSql(deleteSignSQL);
+                    //删除发文信息
                     db.ExecuteSql(deleteFilesSQL);
+                    //删除系统消息
+                    db.ExecuteSql(deleteMsgSQL);
                     Tool.Alert("删除成功！", _Page);
                 }
                 catch(Exception ex)
