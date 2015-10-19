@@ -1,0 +1,204 @@
+body
+{
+    font-size: 75%;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+/*主界面上的按钮-----------------------------------------------------------*/
+.png-bak
+{
+    text-align:center;
+    cursor:pointer;
+    height:240px;
+}
+.png-btn
+{
+    background-position:center;
+    background-repeat:no-repeat;
+    width:128px;
+    height:128px;
+    display:block;
+    margin:0 auto;    
+}
+.png-text
+{
+    color:White;
+    font-size:large;
+    vertical-align:bottom;
+    line-height:32px;
+}
+.png-zbyw
+{
+    background-image:url("images/zaibanyewu.png");
+}
+.png-zbyw-64
+{
+    background-image:url("images/64/zaibanyewu.png");
+}
+.png-yj
+{
+    background-image:url("images/youjian.png");
+}
+.png-yj-64
+{
+    background-image:url("images/64/youjian.png");
+}
+.png-wt
+{
+    background-image:url("images/weituo.png");
+}
+.png-wt-64
+{
+    background-image:url("images/64/weituo.png");
+}
+.png-tzgg
+{
+    background-image:url("images/tongzhigonggao.png");
+}
+.png-tzgg-64
+{
+    background-image:url("images/64/tongzhigonggao.png");
+}
+.png-grsz
+{
+    background-image:url("images/gerenshezhi.png");
+}
+.png-grsz-64
+{
+    background-image:url("images/64/gerenshezhi.png");
+}
+.png-dxx
+{
+    background-image:url("images/duanxiaoxi.png");
+}
+.png-dxx-64
+{
+    background-image:url("images/64/duanxiaoxi.png");
+}
+.png-cx
+{
+    background-image:url("images/chaxun.png");
+}
+.png-cx-64
+{
+    background-image:url("images/64/chaxun.png");
+}
+.png-txll
+{
+    background-image:url("images/tuxing.png");
+}
+.png-txll-64
+{
+    background-image:url("images/64/tuxing.png");
+}
+ .msgr, .msgl
+    {
+        min-width: 140px;
+        display: inline;
+        margin-bottom: 2px;
+        position: relative;
+        max-width:300px;
+        margin-top:10px;
+    }
+    .msgr
+    {
+        float: right;
+        margin-right: 5px;
+    }
+    .msgarr
+    {
+        background: url('../message/icons.png') no-repeat scroll 0 0 transparent;
+        height: 9px;
+        position: absolute;
+        width: 6px;
+        display:block;
+    }
+    .msgr .msgbox
+    {
+        background: none repeat scroll 0 0 #EBFBE3;
+        border: 1px solid #DFF0D8;
+    }
+    .msgr .msgarr
+    {
+        background-position: -140px -20px;
+        top: 10px;
+        right: -5px;
+    }
+    .msgl
+    {
+        float: left;
+        margin-left: 5px;
+    }
+    .msgl .msgbox
+    {
+        background: none repeat scroll 0 0 #F3F3F3;
+        border: 1px solid #EAEAEA;
+    }
+    .msgl .msgarr
+    {
+        background-position: -160px -20px;
+        top: 10px;
+        left: -5px;
+    }

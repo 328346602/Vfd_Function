@@ -1,0 +1,367 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    
+}
+#d_Toft
+{
+    position: relative;
+    overflow: hidden;   
+    min-width:900px;
+    min-height:550px;
+    height:100%;
+}
+#d_Head
+{
+    width:100%;
+    height:122px;   
+    position:relative;
+    background-image: url('images/title-bg.gif');
+    background-repeat:repeat-x;
+    top:0px;
+}
+#d_Head_Left
+{
+    height:90px;
+    width:500px;
+    background-image: url('images/logo.gif');
+    background-repeat:no-repeat;
+    position:absolute;
+    left:0px;
+    z-index:1;
+}
+#d_Head_Right
+{
+    width:500px;
+    height:90px;
+    background-image:url('images/title_r.gif');
+    background-repeat:no-repeat;
+    background-position:left;
+    right:0px;
+    position:absolute;
+    z-index:0;
+    min-width:300px;
+}
+#d_Head_Tool
+{
+    width:100%;
+    height:32px;
+    position:absolute;
+    background-image:url('images/toolb-bg.gif');
+    z-index:2;
+    bottom:0px;
+}
+#d_Middle
+{
+    background-image:url('images/main-bg-image.gif');   
+    background-repeat:repeat-x;
+    position:relative;
+    width:100%;
+    min-height:408px;
+    margin-top:0px;
+}
+#d_Middle_Menu
+{
+    height: 100%;
+    width:200px;
+    position:absolute;
+    left:0px;
+    display:block;  
+}
+#d_Middle_Tool
+{
+    height: 100%;
+    width:10px;
+    left: 200px;
+    background-image:url('images/left-to-main.gif');
+    background-repeat:repeat-y;
+    position:absolute;
+}
+
+.tool_Button
+{
+    height: 100%;
+    background-image:url('images/to-left.gif');
+    background-position:center;
+    background-repeat:no-repeat;
+    cursor:pointer;  
+}
+.tool_Button_Right
+{
+    height: 100%;
+    background-image:url('images/to-right.gif');
+    background-position:center;
+    background-repeat:no-repeat;
+    cursor:pointer;  
+}
+#d_Middle_Content
+{
+    height: 100%;    
+    margin-left: 210px;
+    margin-right: 0px;
+}
+#d_Bottom
+{
+    position: relative;
+    background-image: url('images/bottom.gif');
+    height: 20px;
+    width: 100%;
+    font-size: 9pt;
+    color: #000080;
+    overflow: hidden;
+    vertical-align:middle;
+    line-height: 20px; 
+    overflow: hidden; 
+}
+#d_Wait_Back 
+{
+    height:100%;
+    width:100%;        
+    position:absolute;
+    top:0px;
+    z-index:98;
+   display:none;
+   background-image:url('images/bg.png');
+}
+#d_Wait
+{
+    height:100%;
+    width:100%;    
+    position:absolute;
+    background-image: url('images/loading.gif');
+    background-repeat:no-repeat;
+    background-position:center;
+    z-index:99;
+}
+#d_Message
+{
+    display:none;
+    position:absolute;
+}
+.mainMenu
+{
+    background-image:url('images/Left_Menu.gif');
+    background-repeat:no-repeat;
+    background-position:center;
+    width:190px;
+    height:30px;
+    cursor:pointer;
+    vertical-align:middle;
+    line-height: 30px;
+    overflow: hidden;   
+    /*display:table;     */
+    top:50%
+}
+.mainMenuText
+{
+    color:White;
+    font-weight:bold;
+    font-size:10pt;
+}
+#t_Menu
+{   
+    margin:2px 3px 0px 3px;    
+}
+.mainMenu_Child
+{
+    border-color: #808080;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-style: outset;
+    border-bottom-style: groove;
+    border-right-style: groove;
+    width: 188px;
+    overflow:hidden;
+    position:relative;
+}
+.secondMenu
+{
+    cursor:pointer;
+    border-width: 1px;
+    border-color: White;
+    border-style: dotted none none none;
+    background-image: url('images/Left_Menu2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: White;
+    height: 22px;
+    color: #336699;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 22px;
+}
+
+.secondMenu:hover
+{
+    background-image:url('images/Left_Menu2 hover.png');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.secondMenu_Select
+{
+    background-image:url('images/Left_Menu2 hover.png');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.secondMenu_Child
+{
+}
+
+.thirdMenu
+{
+  cursor:pointer;
+  height:20px;
+  font-size: 12px;
+  color:Gray;
+  line-height: 20px;
+  overflow:hidden;
+}
+.thirdMenu:hover
+{
+    background-image:url('images/Left_Menu3 hover.png');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.thirdMenu_Select
+{
+    background-image:url('images/Left_Menu3 hover.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    
+}
+
+#d_Head_Tool_Menu
+{
+    height:32px; 
+    z-index:3;
+    right:26px;
+    position:absolute;
+    line-height:32px;
+    overflow:hidden;
+}
+#d_Head_Small
+{
+    height:100%; 
+    z-index:3;
+    right:20px;
+    position:absolute;
+    line-height:32px;
+}
+.head_Toolbar
+{  
+    height:32px;
+    width:88px;
+    color:White;
+    font-weight:bold;    
+    text-align:center;
+    cursor:pointer;
+    display:table-cell;
+    font-size:10pt;  
+    overflow:hidden;
+}
+.head_Toolbar_Hover
+{      
+    background-image:url('images/toolbar.gif');
+    background-position:bottom;
+    background-repeat:no-repeat; 
+    overflow:hidden;
+}
+.head_Toolbar_Select
+{
+    background-image:url('images/toolbar hover.gif');  
+    background-position:0px 5px;
+    background-repeat:no-repeat; 
+    color: #336699;
+    overflow:hidden;
+}
+.logOff
+{
+    background-image: url('../smaller/zx.png');
+    background-repeat:no-repeat;
+    background-position:left;  
+    cursor:pointer;
+    text-align:right;
+    color:navy;
+    font-weight:bold;
+    font-size:10pt;
+    line-height:29px;
+    vertical-align:middle; 
+    width:45px; 
+}
+
+.logOff:hover
+{
+    background-image: url('../smaller/zx hover.png');
+    background-repeat:no-repeat;
+    background-position:left;
+    color:Red;
+}
+
+.time
+{
+    color:navy;
+    font-weight:bold;
+    font-size:10pt;
+    line-height:29px;  
+}
+
+#d_Head_Buttons
+{
+    position:absolute;
+    top:0px;
+    right:15px;
+}
+#d_Flow_Left
+{
+    background-image: url('images/float-left-image.png');
+    background-repeat:no-repeat;
+    height:29px;
+    width:35px;
+}
+#d_Flow_Repeat
+{
+    background-image: url('images/float-image-repeat.png');
+    background-repeat:repeat-x;
+    height:29px;   
+}
+#d_Flow_Right
+{
+    background-image: url('images/float-right-image.png');
+    background-repeat:no-repeat;
+    height:29px;
+    width:35px;
+}
+.scrollUp
+{
+    position:absolute;
+    top:0px;
+    display:none;
+}
+.scrollDown
+{
+    position:absolute;
+    bottom:0px;
+    display:none;
+}
+#d_Head_Small
+{
+    position:absolute;
+    right:2px;
+    width:22px;
+    height:22px;
+    top:5px;
+    line-height:22px;
+    vertical-align:middle;
+    text-align:center;
+}
+#d_Head_Small:hover
+{
+   background-image: url('../smaller/bace_min_btn.png');
+   background-repeat:no-repeat;
+}

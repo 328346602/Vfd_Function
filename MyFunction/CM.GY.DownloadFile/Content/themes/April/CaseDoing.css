@@ -1,0 +1,83 @@
+﻿.doing_head,.doing_body,.doing_bottom
+{
+     position:relative;
+     width:100%;    
+}
+.doing_head
+{
+    height:32px;   
+    top:0px;    
+}
+.doing_body
+{
+  
+}
+.doing_bottom
+{
+    bottom:0px;    
+    height:24px;
+    line-height:24px;
+}
+.doing_box_bak
+{
+    position:absolute;
+    top:0px;
+    left:2px;
+    right:2px;
+    bottom:0px;
+    overflow:auto;        
+}
+.doing_state
+{
+    position:absolute;
+    top:10px;
+    float:left;
+}
+.doing_search
+{
+    top:5px;
+    right:0px;
+    margin-right:5px; 
+    position:absolute;  
+    cursor:pointer;
+    background-image:url('images/btnsearch1.png');
+    width:83px;
+    height:22px;
+    line-height:22px;
+    font-weight:bold;        
+}
+.doing_count
+{    
+    font-weight:bold;  
+}
+.doing_bar
+{
+    top:10px;
+    float:left;
+    margin-left:260px;
+    position:absolute;
+}
+.doing_search:hover
+{
+    background-image:url('images/btnsearch2.png');
+}
+.doing_state ul li
+{
+    list-style:none none outside;
+    float:left;
+    margin-right:10px;
+    cursor:pointer;
+}
+.doing_state .state_img
+{
+    position:relative;
+    float:left;
+}
+.doing_state .state_img img
+{
+    display: block;
+}
+.doing_state .stete_txt
+{
+    float:left;
+}

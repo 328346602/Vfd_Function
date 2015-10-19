@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DbConn>Data Source=.;Initial Catalog=landwebdb;User ID=sa;Password=sa;</DbConn>
+  <DbConn_Email>Data Source=.;Initial Catalog=landwebfiles;User ID=sa;Password=sa;</DbConn_Email>
+  <DbType>SQLSERVER</DbType>
+  <TimeOut>30</TimeOut>
+  <LoginCountSpan>30</LoginCountSpan>
+  <AdminID>326</AdminID>
+  <GroupMode>1</GroupMode>
+  <SystemName>衡阳市电子政务系统</SystemName>
+  <SysTempDirPath>~/TempFile </SysTempDirPath>
+  <SysVersion>湖南衡阳</SysVersion>
+</Config>

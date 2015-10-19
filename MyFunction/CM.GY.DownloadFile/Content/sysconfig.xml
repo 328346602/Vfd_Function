@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DbConn>password=zzoa;Data Source=weboa;User ID=zzoa;</DbConn>
+  <DbConn_Email>PASSWORD=zzoa;DATA SOURCE=weboa;USER ID=zzoa;</DbConn_Email>
+  <DbConn_File>PASSWORD=webfile;DATA SOURCE=orcl1;USER ID=webfile;</DbConn_File>
+  <DbType>ORACLE</DbType>
+  <TimeOut>30</TimeOut>
+  <LoginCountSpan>30</LoginCountSpan>
+  <AdminID>190</AdminID>
+  <GroupMode>1</GroupMode>
+  <SystemName>国土资源电子政务平台</SystemName>
+  <SysTempDirPath>~/TempFile</SysTempDirPath>
+  <SysVersion>通用版</SysVersion>
+  <FtpServerName>192.168.1.4</FtpServerName>
+  <FtpServerPort>21</FtpServerPort>
+  <FtpUser>administrator</FtpUser>
+  <FtpPsw>Server2008</FtpPsw>
+  <CaseNoCfgRule>2</CaseNoCfgRule>
+  <UpFileTypeList>.txt,.bmp,.doc,.gif,.jpg,.png,.pdf,.docx</UpFileTypeList>
+  <UpFileTypeOpen>.txt,.bmp,.doc,.gif,.jpg,.png,.pdf,.docx</UpFileTypeOpen>
+  <FtpVirtualDir>oWebSite</FtpVirtualDir>
+</Config>
