@@ -26,7 +26,7 @@ namespace CM.GY.GW
             }
             catch (Exception ex)
             {
-                Log.WriteError("OnStart Error>>>>>" + ex.Message);
+                Log.WriteDebug("OnStart Error>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -50,7 +50,7 @@ namespace CM.GY.GW
                 }
                 catch(Exception ex)
                 {
-                    Log.WriteError("Start Error>>>>>" + ex.Message);
+                    Log.WriteDebug("Start Error>>>>>" + ex.Message);
                     throw ex;
                 }
                    
@@ -66,8 +66,7 @@ namespace CM.GY.GW
                     }
                     catch (Exception ex)
                     {
-                        Log.WriteError("ThreadAction Error>>>>>" + ex.Message);
-                        throw ex;
+                        Log.WriteDebug("ThreadAction Error>>>>>" + ex.Message);
                     }
                 }
             }

@@ -17,21 +17,11 @@ namespace CM.GY.GW
 
         public DatabaseORC()
         {
-            try
-            {
-                //测试方法
-                string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString();
-
-                //中地使用方法
-                //string connStr = System.Configuration.ConfigurationManager.AppSettings["connectionString"].ToString();
-                Conn = new OracleConnection(connStr);
-                Log.WriteDebug("connStr>>>>>" + connStr);
-            }
-            catch(Exception ex)
-            {
-                Log.WriteError("DatabaseORC>>>>>"+ex.Message);
-                throw ex;
-            }
+            //测试方法
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["connectionString"].ToString();
+            //中地使用方法
+            //string connStr = System.Configuration.ConfigurationManager.AppSettings["connectionString"].ToString();
+            Conn = new OracleConnection(connStr);
         }
 
         public DatabaseORC(string constr)

@@ -17,7 +17,7 @@ namespace CM.GY.GW
             try
             {
                 DatabaseORC db = new DatabaseORC();
-                string SQL = "select t.receiveid as \"接收人\",count(t.signflag)-sum(t.signflag)  as \"已签数目\" ,count(t.signflag) as \"案卷总数\" from cm_lc_sign t group by t.receiveid ";
+                string SQL = "select t.receiveid as \"接收人\",sum(t.signflag)  as \"未签数目\" ,count(t.signflag) as \"案卷总数\" from cm_lc_sign t group by t.receiveid ";
                 DataSet ds = db.GetDataSet(SQL);
                 DataRow dr;
                 if(ds.Tables.Count>0)
@@ -35,11 +35,10 @@ namespace CM.GY.GW
                         }
                     }
                 }
-                return;
             }
             catch(Exception ex)
             {
-                Log.WriteError("Exec>>>>>" + ex.Message);
+                Log.WriteDebug("Exec>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -72,7 +71,7 @@ namespace CM.GY.GW
             }
             catch(Exception ex)
             {
-                Log.WriteError("SendToUser>>>>>" + ex.Message);
+                Log.WriteDebug("SendToUser>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -88,17 +87,16 @@ namespace CM.GY.GW
         {
             try
             {
-                //uint numUnRead = uint.Parse(dr[2].ToString()) - uint.Parse(dr[1].ToString());
+                
                 string Msg = "共收到文件" + dr[2] + "个，其中" + dr[1] + "个未读，点击查看详情。";
-                string MsgInfo = "&nbsp;&nbsp;&nbsp;&nbsp;<a class='grid-pager' href='#' onclick='top.redirectUrl(\"SubSysFlowFile/BanGongShi/SendFiles/MyFilesList.vfd?ENDTIME=2100-12-24&STARTTIME=2000-01-01&FAQIREN=&FILENAME=&JINJICHENGDU=&SIGNFLAG=\"); return false;'>" + Msg + "</a>";
-                string SQL = "update messagesys t set t.cometime=to_date('" + DateTime.Now + "','yyyy-mm-dd hh24:mi:ss'), t.messageinfo='" + MsgInfo.Replace("'", "''") + "',t.message='" + Msg + "' where t.receiveid=" + dr[0] + " and t.msgtype='签收统计' and t.showflg=0";
+                string MsgInfo = "&nbsp;&nbsp;&nbsp;&nbsp;<a class='grid-pager' href='#' onclick='top.redirectUrl(\"SubSysFlowFile/BanGongShi/SendFiles/FilesInfo.vfd?CASENO=E13A095E331940E085DE0BAC39B1BA5C\"); return false;'>" + Msg + "</a>";
+                string SQL = "update messagesys t set t.messageinfo='" + MsgInfo + "',t.message='" + Msg + "' where t.receiveid=" + dr[0] + " and t.msgtype='签收统计'";
                 Log.WriteDebug("update>>>>>"+SQL);
-                db.ExecuteSql(SQL);
                 return true;
             }
             catch(Exception ex)
             {
-                Log.WriteError("Update>>>>>" + ex.Message);
+                Log.WriteDebug("Update>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -115,17 +113,14 @@ namespace CM.GY.GW
             try
             {
                 string Msg = "共收到文件" + dr[2] + "个，其中" + dr[1] + "个未读，点击查看详情。";
-                string MsgInfo = "&nbsp;&nbsp;&nbsp;&nbsp;<a class='grid-pager' href='#' onclick='top.redirectUrl(\"SubSysFlowFile/BanGongShi/SendFiles/MyFilesList.vfd?ENDTIME=2100-12-24&STARTTIME=2000-01-01&FAQIREN=&FILENAME=&JINJICHENGDU=&SIGNFLAG=\"); return false;'>" + Msg + "</a>";
-                //MsgInfo.Replace("'","''");
-                string SQL = "insert into messagesys t (t.receiveid,t.msgtype,t.messageinfo,t.message,t.cometime) values('" + dr[0] + "','签收统计','" + MsgInfo.Replace("'", "''") + "','" + Msg + "',to_date('" + DateTime.Now + "','yyyy-mm-dd hh24:mi:ss'))";
-                //SQL.Replace("'","''");
+                string MsgInfo = "&nbsp;&nbsp;&nbsp;&nbsp;<a class='grid-pager' href='#' onclick='top.redirectUrl(\"SubSysFlowFile/BanGongShi/SendFiles/FilesInfo.vfd?CASENO=E13A095E331940E085DE0BAC39B1BA5C\"); return false;'>" + Msg + "</a>";
+                string SQL = "insert into messagesys t (t.messageinfo,t.message,t.cometime) values('" + MsgInfo + "','" + Msg + "','" + DateTime.Now + "')'";
                 Log.WriteDebug("insert>>>>>" + SQL);
-                db.ExecuteSql(SQL);
                 return true;
             }
             catch(Exception ex)
             {
-                Log.WriteError("Insert>>>>>" + ex.Message);
+                Log.WriteDebug("Insert>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -139,12 +134,11 @@ namespace CM.GY.GW
             try
             {
                 int iSleepTime = int.Parse(System.Configuration.ConfigurationManager.AppSettings["SleepTime"].ToString()) * 1000 * 60;//休眠时间单位为分钟
-                Log.WriteDebug("SleepTime>>>>>"+iSleepTime);
                 return iSleepTime;
             }
             catch (Exception oExcept)
             {
-                Log.WriteError("SleepTime>>>>>" + oExcept.Message);
+                Log.WriteDebug("SleepTime>>>>>" + oExcept.Message);
                 return 24 * 60 * 60 * 1000;//默认每天运行一次
             }
         }
