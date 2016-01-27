@@ -43,7 +43,7 @@ namespace CM.GY.DownloadFile
             }
             catch (Exception ex)
             {
-                Tool.WriteLog("Config.getConnectionString>>>>>"+ ex.Message);
+                Log.WriteError("Config.getConnectionString>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -57,7 +57,7 @@ namespace CM.GY.DownloadFile
             }
             catch(Exception ex)
             {
-                Tool.WriteLog("Config.setConnectionString>>>>>"+ex.Message);
+                Log.WriteError("Config.setConnectionString>>>>>" + ex.Message);
                 throw ex;
             }
         } 
@@ -66,20 +66,6 @@ namespace CM.GY.DownloadFile
 
     public class Tool
     {
-        public static void WriteLog(string sMsg)
-        {
-            try
-            {
-                string sUrl = System.Web.HttpContext.Current.Server.MapPath("~/TempFile");
-                string sPath = sUrl + "/Test" + System.DateTime.Today.ToString("yyyy-MM-dd") + ".txt";
-                WebUse.Logs.WriteLog(sPath, sMsg);
-            }
-            catch (Exception oExcept)
-            {
-                WebUse.Logs.WriteLog(System.Web.HttpContext.Current.Server.MapPath("~/TempFile") + ".txt", "写日志方法出错--------" + oExcept.Message);
-            }
-        }
-
 
         /// <summary>
         /// 将指定目录下的所有文件压缩，打包成一个名为fileName的rar文件
@@ -136,7 +122,7 @@ namespace CM.GY.DownloadFile
             }
             catch (Exception ex)
             {
-                WriteLog("Tool.BuildZipFile>>>>>" + ex.Message);
+                Log.WriteError("Tool.BuildZipFile>>>>>" + ex.Message);
                 throw ex;
             }
             
@@ -212,7 +198,7 @@ namespace CM.GY.DownloadFile
             }
             catch (Exception ex)
             {
-                WriteLog("Tool.OutputFiles>>>>>"+ex.Message);
+                Log.WriteError("Tool.OutputFiles>>>>>" + ex.Message);
                 throw ex;
             }
         }
@@ -223,7 +209,7 @@ namespace CM.GY.DownloadFile
             {
                 #region 定义变量
                 DatabaseORC db = new DatabaseORC(Config.getConnectionString());//建立数据库连接
-                string SQL = "select t.MaterialName,t.FileName from upfileslist t where t.CASENO='" + CaseNo + "'";//数据查询SQL，不读取二进制文件以提高查询效率
+                string SQL = "select t.MaterialName,t.FileName,t.UpFileTime from upfileslist t where t.CASENO='" + CaseNo + "' order by t.UpFileTime desc";//数据查询SQL，不读取二进制文件以提高查询效率
                 DataSet ds = db.GetDataSet(SQL);//获取SQL查询到的数据
                 #endregion
 
@@ -232,13 +218,15 @@ namespace CM.GY.DownloadFile
                     DataTable dt = ds.Tables[0];
                     if(dt.Rows.Count>0)//判断目标dt中是否有数据
                     {
+                        string guid = Guid.NewGuid().ToString();
                         string filePath = AppDomain.CurrentDomain.BaseDirectory.ToString() + "/TempFile/" + CaseNo;//文件保存路径
-                        string rarName = filePath + "/" + CaseNo + ".rar";//生成打包文件的路径
-                        
-                        if (!File.Exists(rarName))
-                        {
-                            if(!File.Exists(rarName))
-                            {
+                        string rarName = filePath + "/" + guid + ".rar";//生成打包文件的路径
+                        string rarPath = "/TempFile/" + CaseNo + "/" + guid + ".rar";
+
+                        //if (!File.Exists(rarName))
+                        //{
+                        //    if(!File.Exists(rarName))
+                        //    {
                                 #region 定义变量以及创建必要的路径
                                 System.IO.Directory.CreateDirectory(filePath);//创建临时文件夹
                                 byte[] tempBytes;//保存二进制临时文件
@@ -253,7 +241,7 @@ namespace CM.GY.DownloadFile
                                 #region 遍历数据库提取文件，文件存放在对应的目录
                                 for (int i = 0; i != dt.Rows.Count; ++i)
                                 {
-                                    ZipEntry entry = new ZipEntry(dt.Rows[i][0] + "/" + dt.Rows[i][1]);//rar中新建压缩文件入口以存放数据
+                                    ZipEntry entry = new ZipEntry(dt.Rows[i][0].ToString() + "/" + (i + 1) + "." + dt.Rows[i][1].ToString());//rar中新建压缩文件入口以存放数据
                                     zos.PutNextEntry(entry);
                                     tempBytes = (byte[])dt.Rows[i][2];
                                     /*
@@ -275,11 +263,13 @@ namespace CM.GY.DownloadFile
 
                                 zos.Close();
                                
-                            }
-                        }
-                        string rarPath = "/TempFile/" + CaseNo + "/" + CaseNo + ".rar";
+                        //    }
+                        //}
+
+                        
                         return rarPath;
                     }
+                    
                     else
                     {
                         return "0";
@@ -292,7 +282,7 @@ namespace CM.GY.DownloadFile
             }
             catch(Exception ex)
             {
-                WriteLog("rarFile>>>>>"+ex.Message);
+                Log.WriteError("rarFile>>>>>"+ex.Message);
                 throw ex;
             }
         }

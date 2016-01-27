@@ -78,6 +78,7 @@
     <Compile Include="DownloadFile.aspx.designer.cs">
       <DependentUpon>DownloadFile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
